@@ -1,0 +1,3 @@
+L     f       .text           $   Ü   H           0`.data                               @ 0À.bss                                € 0À.rdata                            @ 0@/4              @                 @ 0@U‰åƒäðƒìè    Ç$    è    ¸    ÉÃgcc -v  GCC: (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0  
+          
+           .file       þÿ  gprograms.cpp      _main                            .text          !                .data                            .bss                             .rdata                                         ?                 ___main          _system             .rdata$zzz .rdata$zzz 

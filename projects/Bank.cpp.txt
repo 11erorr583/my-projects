@@ -1,0 +1,443 @@
+#include<iostream>
+#include<conio.h>
+#include<windows.h>
+using namespace std;
+class person//class for personal details
+{
+    string name;
+    int age;
+    string date_of_birth;
+    
+    public:
+     int income;
+  void data()
+    {
+        cout<<" enter your name ";
+        cin>>name;
+        cout<<" enter your age ";
+        cin>>age;
+        cout<<" enter your date of birth ";
+        cin>>date_of_birth;
+        cout<<" Enter your income ";
+        cin>>income;
+
+    }
+};
+class ATM  // class named as ATM contains the common features for all Banks like withdrawl,loan,deposit
+{
+  private:
+ // int opt;//choise entered by the user for withdrawl or deposit 
+  int digits;//no. of digits in the passcode
+  int Withdrawl=0;
+  int Deposit=0;
+  int Loan=0;
+  person a;
+   
+  public:
+  
+  
+ //double total_amount=0;
+ double total_amount=800000.0;
+  int opt;//choise entered by the user for withdrawl or deposit 
+  char real[4]={'4','0','0','3'};
+ 
+  void code()//constructor to add pass from the user
+  { 
+    
+     // total_amount=8000000;// total amount in the account
+       cout<<"  Enter your pin_code  "<<endl;
+      digits=4;
+     char pass[digits];
+     cin.ignore();
+     for(int i=0;i<digits;i++)
+     {
+        pass[i]=_getch();
+        Beep(523,326);
+     }
+     int m=0;//use to check the password 
+     for(int j=0;j<digits;j++)
+     {
+        if(pass[j]==real[j])
+        {
+          m+=1;//suger synthetic
+        }
+                 
+    }
+   if(m==digits)
+   {
+    cout<<" press: 1 for withdrawl, 2 for deposit and 3 for loan";
+    cin>>opt;
+   }
+   else
+   cout<<" Wrong entry:(";
+
+
+
+  }      
+
+       void loan() //loan will be approved only if the income is greater than or equal to the fourth part of total balance you have
+       {
+   
+        cout<<" Enter the amount you want to loan ";
+        cin>>Loan;
+        if(a.income>=total_amount/4)
+        {
+            cout<<" Congrates !! you have taken loan ";
+            cout<<endl<<" The total amount is ";
+            total_amount=total_amount+Loan;
+            cout<<total_amount;
+        }
+        else
+        {cout<<" You are not elligible ";
+          return ;}
+      }
+  void withdrawl()
+  {
+    
+        cout<<" Enter the amount you want to withdrawl ";
+        cin>>Withdrawl;
+        if(total_amount >= Withdrawl)
+        {
+            cout<<" You have successfully withdrawl the amount!! ";
+            total_amount=total_amount - Withdrawl;
+            cout<<endl<<" Now the total amount in you account is: ";
+            cout<< total_amount<<endl;
+        }
+        if(total_amount < Withdrawl)
+        {
+            cout<<" you can not withdrawl "<<Withdrawl<<endl;
+            cout<<"if you want to take loan press 'l' else press 2 ";
+            char option;
+            cin>>option;
+            if(option=='l')
+            {
+                loan();
+            }
+            else
+            cout<<" The total amount in your account is ";
+            cout<<total_amount;
+        
+    }
+    }
+    void  deposit()
+    {
+        
+          cout<<" Enter the amount you want to deposit ";
+           cin>>Deposit;
+           total_amount = total_amount + Deposit;
+            cout<<" You have successfully deposited the amount ";
+            cout<<endl<<" the total amount in you account is "<<total_amount<<endl;
+            
+        
+    }
+};
+class HBL:public person //profit rate of the HBL is 16%
+{
+    private:
+    float  profit=0;
+    float profit_rate=0;
+    float tax_deduction=0;//15% for the filers and 30% for the non filers
+    float remaining=0;
+    int choise=0;
+    //person ab;
+    ATM n;
+    
+    public:
+    
+    void  features()
+    { data();
+        n.code();
+           if(n.opt == 1) 
+        {
+           n.withdrawl();
+       }
+       else
+       if(n.opt==2)
+       {
+       n.deposit();
+       }
+      else
+      if(n.opt==3)
+      {
+       n.loan();
+      }
+    }
+   
+   void deduction()
+    {
+       
+        n.total_amount += profit;
+
+        cout<<" Enter your status:( press 1 for filer and 2 for non-filer ) "<<endl;
+        cin>>choise;
+        if(choise==1)
+        {
+             profit_rate=0.16;
+        profit= n.total_amount*profit_rate;
+            
+            tax_deduction=(profit*15)/100;
+        }
+        if(choise==2)
+        {
+             profit_rate=0.30;
+        profit= n.total_amount*profit_rate;
+            tax_deduction=(profit*30)/100;
+        }
+        remaining = n.total_amount - tax_deduction;
+       n.total_amount= remaining;
+       cout<<" The profit  this month is "<<endl;
+       cout<<profit;
+       cout<<endl<<" The tax deduction this month is:  "<< tax_deduction;
+       cout<<" Now the total amount is:  ";
+       cout<< n.total_amount<<endl;
+    }
+    };
+    class Islamic:public person//class for islamic bank this bank deduct zakat  of 2.5% per-anum 
+    {
+        private:
+    float  profit=0;
+    float profit_rate=0;
+    float tax_deduction=0;//15% for the filers and 30% for the non filers
+   double remaining=0;
+    float zakat=0;
+    int choise=0;
+    ATM d;
+    
+    //person abc;
+    public:
+   
+    void Features()
+    { data();
+      d.code();
+        if(d.opt==1)
+       {
+       d.withdrawl();
+       }
+       else
+       if(d.opt==2)
+       {
+        d.deposit();
+       }
+      else
+      if( d.opt==3)
+      {
+       d.loan();
+      }
+       }
+   void Deduction()
+    {
+       
+
+        cout<<" Enter your status:( press 1 for filer and 2 for non-filer ) "<<endl;
+        cin>>choise;
+        if(choise==1)
+        {
+             profit_rate=0.16;
+        profit=d.total_amount*profit_rate;
+        }
+         if(choise==2)
+        {
+             profit_rate=0.30;
+        profit=d.total_amount*profit_rate;
+        }
+        if(choise==1)
+        {
+            
+            tax_deduction=(profit*15)/100;
+            
+        }
+        if(choise==2)
+        {
+            tax_deduction=(profit*30)/100;
+        }
+         d.total_amount += profit;
+         zakat=0.025*d.total_amount;
+
+        remaining = d.total_amount - tax_deduction;
+          
+       d.total_amount= remaining;
+       cout<<" The profit  this month is "<<endl;
+       cout<<profit;
+       cout<<endl<<" The tax deduction this month is:  "<< tax_deduction;
+       cout<<" Now the total amount is:  ";
+       cout<<d.total_amount<<endl;
+       cout<<" Zakat: "<<zakat;
+    }
+     };
+     
+class Nationalbank
+  {
+    private:
+     // double incometax=0;
+     int day=0;
+     int month=0;
+     int helmet=0;
+   int oneway=0;
+   int overspeed=0;
+   char stype;//challan type implemented or imposed
+   char vtype;
+  
+  public:
+  person c;
+  ATM d;
+  
+ float   incometax=(25/100.0)*200000;   
+    
+  
+  void in_tax_calculation()
+  {    c.data();
+    cout<<" Enter day ";
+    cin>>day;
+    cout<<" Enter month ";
+    cin>>month;
+   
+   // incometax=(25/100)*200000;     //c.income;                //incometax is equal to the 25% of income
+    if(day<=15 && month==4)//the due date to pay income tax is 15-April
+    {
+        cout<<" The income tax implemented is "<<incometax<<endl;
+        cout<<" Now the total amount is:  ";
+        d.total_amount=d.total_amount-incometax;
+        cout<<d.total_amount<<endl;
+    }
+    else
+    {
+        cout<<" 2% Planty will be added to your tax as you over the due_date ";
+        int planty=(2/100)*incometax;
+        incometax=planty+incometax;
+        cout<<" The income tax implemented is "<<incometax<<endl;
+        cout<<" Now the total amount is:  ";
+        d.total_amount=d.total_amount-incometax;
+        cout<<d.total_amount<<endl;
+
+    }
+  }
+   
+    void challan_implement()
+    {  
+        cout<<" Enter the type of challan  "<<endl;
+       cout<<" if due to helmet press1:  "<<endl<<" If due to oneway press2: "<<endl<<" If due to overspeed press3: "<<endl;
+       cin>>stype;
+       cout<<" Tell your vahicle type "<<endl;
+       cout<<" If your vahicle is motorcycle press: M"<<endl<<" If your vahicle is car press: C"<<endl;
+       cin>>vtype;
+       //challan due to helmet
+      
+        if((vtype=='M' || vtype=='m') && (stype=='1') )
+        {
+            helmet=1000;
+            d.total_amount=d.total_amount-helmet;
+            cout<<" The challan: "<<helmet<<"  have been deduced  "<<endl;
+            cout<<" Now! totla amount is: "<<d.total_amount;
+
+        }
+        else
+        if((vtype=='C'|| vtype=='c') && (stype=='1'))
+        {
+            helmet=2000;
+             d.total_amount=d.total_amount-helmet;
+            cout<<" The challan: "<<helmet<<"  have been deduced  "<<endl;
+            cout<<" Now! totla amount is: "<<d.total_amount;
+
+
+        }
+       
+       else
+      
+        if((vtype=='M' || vtype=='m') && (stype=='2'))
+        {
+            oneway=5000;
+             
+            d.total_amount=d.total_amount - oneway;
+            cout<<" The challan: "<<oneway<<"  have been deduced  "<<endl;
+            cout<<" Now! totla amount is: "<<d.total_amount;
+
+
+        }
+        else
+        if(vtype=='C' || vtype=='c' && stype=='2')
+        {
+            oneway=8000;
+             d.total_amount=d.total_amount - oneway;
+            cout<<" The challan: "<<oneway<<"  have been deduced  "<<endl;
+            cout<<" Now! totla amount is: "<<d.total_amount;}
+
+        else
+           if((vtype=='M'||vtype=='m')&& stype=='3')
+           {
+             overspeed=1000;
+             d.total_amount=d.total_amount - overspeed;
+            cout<<" The challan: "<<overspeed<<"  have been deduced  "<<endl;
+            cout<<" Now! totla amount is: "<<d.total_amount;
+           }
+           else
+           if((vtype=='C'||vtype=='c') && stype=='3')
+           {
+            overspeed=10000;
+            d.total_amount=d.total_amount - overspeed;
+            cout<<" The challan: "<<overspeed<<"  have been deduced  "<<endl;
+            cout<<" Now! totla amount is: "<<d.total_amount;
+      }    
+    }
+};
+int main()
+{  
+          int select;
+          string again;
+          
+         s: cout<<" Enter 1 for HBL "<<endl<<"press 2:  for Islamic bank "<<endl<<"press 3:  for National bank (challan implementation)";
+          cout<<endl;
+          cin>>select;
+          string selection;
+          char choide;
+          
+           if(select==1)
+           {  HBL obj1;
+             obj1.features();
+              cout<<" To check Tax deduced and total amount press D ";
+          cin>>selection;
+             if(selection=="D")
+             obj1.deduction();
+             }
+             else
+          if(select==2)
+           {
+            Islamic obj2;
+             
+            obj2.Features();
+             cout<<" To check Tax deduced and total amount press D ";
+          cin>>selection;
+             if(selection=="D")
+            obj2.Deduction();
+           }
+        else
+        {  if(select==3)
+          {
+            Nationalbank obj3;
+            int decision;
+            cout<<" Press 1 if you want to pay income tax  "<<endl<<" Press 2 if you want to pay challan(due to traffic rules violation)"<<endl;
+             cin>>decision;
+             if(decision==1)
+             {
+                obj3.in_tax_calculation();
+             }
+             else
+           {  if(decision==2)
+             {
+                obj3.challan_implement();
+             }}
+              }}
+        cout<<" Again?   press:A"<<endl<<" To exit  press:E "<<endl;
+        cin>>again;
+        if(again=="A"|| again=="a")
+        {
+            goto s;
+        }
+        if( again=="E" || again=="e")
+        {
+            return 0;
+        }
+         
+         
+          
+           return 0;
+}

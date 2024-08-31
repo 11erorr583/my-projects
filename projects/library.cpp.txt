@@ -1,0 +1,151 @@
+#include<iostream>
+#include<conio.h>
+#include<stack>
+#include<windows.h>
+using namespace std;
+void access(const char* pdfFilePath)
+{
+    ShellExecute(GetDesktopWindow(), "open", pdfFilePath, NULL, NULL, SW_SHOWNORMAL);
+}
+
+class library
+{  public:
+   int opt;
+   public:
+   library()
+   { 
+      cout<<" Press 1 if you already the member of library ";
+      cout<<endl<<" Press 2  for sign-up";
+      cin>>opt;
+   }
+};
+class books
+{
+    string  choice;
+   // string arr[5];//array for the name of books
+  // string author[5];//array for the name of their authors
+   public:
+  string  arr[5]={"vector and tensor","multivariable calculus","object-ooriented programming","rosen-descrete mathematics",};
+  string  author[5]={"Dr.Nawazish","james stewart","Robert Lafore","Kenneth"};
+   const char*  pdfpath[4]={"C:\\Users\\ZUBIA\\Downloads\\books\\Vector And Tensor By Nawazish Ali Shah_compressed.pdf" , "C:\\Users\\ZUBIA\\Downloads\\books\\Multivariable Calculus 7th Edition By James Stewart (1).pdf" ,"C:\\Users\\ZUBIA\\Downloads\\books\\Object-Oriented Programming in C++ (4th Edition) by Robert Lafore.www.eeeuniversity.com (1).pdf", "C:\\Users\\ZUBIA\\Downloads\\books\\rosen_discrete_mathematics_and_its_applications_7th_edition-1.pdf" };
+   
+   
+   void choose()
+   {  cout<<" press 1:   for vector and Tensor "<<endl;
+      cout<<" press 2:   for  multivariable calculus "<<endl;
+      cout<<" press 3:   for object-ooriented programming  "<<endl;
+      cout<<" press 4:   for  rosen-descrete mathematice "<<endl;
+      cout<<" if you want to search the book by auther's name then press s ";
+      choice=_getch();
+      if(choice=="3")
+      {
+         const char* pdfFilePath = "C:\\Users\\ZUBIA\\Downloads\\books\\Object-Oriented Programming in C++ (4th Edition) by Robert Lafore.www.eeeuniversity.com (1).pdf";
+          ShellExecute(GetDesktopWindow(), "open", pdfFilePath, NULL, NULL, SW_SHOWNORMAL);
+      }
+      else
+      if(choice=="2")
+      {
+         const char* pdfFilePath = "C:\\Users\\ZUBIA\\Downloads\\books\\Multivariable Calculus 7th Edition By James Stewart (1).pdf";
+          ShellExecute(GetDesktopWindow(), "open", pdfFilePath, NULL, NULL, SW_SHOWNORMAL);
+
+      }
+      else
+      if(choice=="1")
+      {
+         const char* pdfFilePath = "C:\\Users\\ZUBIA\\Downloads\\books\\Vector And Tensor By Nawazish Ali Shah_compressed.pdf";
+          ShellExecute(GetDesktopWindow(), "open", pdfFilePath, NULL, NULL, SW_SHOWNORMAL);
+
+      }
+      else
+      if(choice=="4")
+      {
+
+         const char* pdfFilePath = "C:\\Users\\ZUBIA\\Downloads\\books\\rosen_discrete_mathematics_and_its_applications_7th_edition-1.pdf";
+          ShellExecute(GetDesktopWindow(), "open", pdfFilePath, NULL, NULL, SW_SHOWNORMAL);
+
+      }
+      else
+      if (choice=="s")
+      {
+         cout<<" The name of the book followed by author are as followed ";
+         for(int i=0;i<4;i++)
+         { cout<<" BOOK #"<<i+1<<": "<<"\t"<<arr[i]<<endl;
+           cout<<" Author: "<<"\t"<<author[i]<<endl;
+         }
+         string name;
+         cout<<" Enter the name of author ";
+         cin.ignore();
+         getline(cin,name);
+         for(int i=0;i<4;i++)
+         {
+            if(name==author[i])
+            {
+               access(pdfpath[i]);
+            }
+         }
+      }
+   }
+
+
+   };
+   class member: public library
+   {   //static int i;
+       string pass;
+       string data;
+   
+     stack<string>members;
+     string name;
+     books obj;
+      public:
+      member()
+      {// i=1;
+        pass="A121";
+         members.push("Zubia");
+         }
+      void working()
+      {
+         if(opt==1)
+      {
+        cout<<" enter your name ";
+        cin>>name; 
+        //members.push(name);
+        cout<<" enter the password";
+        cin>>data;
+        
+        if(name==members.top() && pass==data)
+        { cout<<" Welcome to your library !!"<<endl;
+          cout<<endl<<" NOW!! choose the book which you want ........"<<endl;
+          obj.choose();
+           }
+           else
+           {cout<<" You are not the member of library to sign-up press 2";
+           cin>>opt;}
+        
+      }
+      
+      string  name;
+      if(opt==2)
+      { 
+         cout<<" enter your name ";
+         cin>>name;
+        members.push(name);
+         cout<<" congrats!! now you are the member of this library ";
+         cout<< endl<<" your password is "<<pass<<endl;
+         cout<<" To access to books press the required keys "<<endl;
+          obj.choose();
+      }
+      }
+   };
+ 
+ //int member::i;
+   int main()
+   { member ABC;
+     ABC.working();
+     return 0;
+   }
+
+
+   
+
+
+

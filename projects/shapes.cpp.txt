@@ -1,0 +1,302 @@
+#include<iostream>
+using namespace std;
+void design1(int row)
+ {  for(int i=row;i>=0;i--)
+  { for(int j=0;j<=row;j++)
+    { if(j<i || j>=(row+1)-i)
+       cout<<"*";
+       else
+         cout<<" ";
+     }
+  cout<<endl;
+}
+return ;
+}
+void design2(int row)
+{ for(int i=1;i<=row-1;i++)
+{for(int j=0;j<=row;j++)
+  { if(j<i|| j>=(row+1)-i )
+     cout<<"*";
+    else
+    cout<<" ";
+   }
+cout<<endl;
+}
+return ;
+}
+void design3(int row)
+{for(int i=row;i>=1;i--)
+  { for(int j=0;j<=row;j++)
+    { if(j<i || j>=(row+1)-i)
+       cout<<"*";
+     else
+       cout<<" ";
+     }
+    cout<<endl;
+  }
+  for(int k=1;k<=row;k++)
+  { for(int l=0;l<=row;l++)
+     { if(l<k || l>=(row+1)-k)
+        cout<<"*";
+       else
+        cout<<" ";
+     }
+  cout<<endl;
+ }
+return ;
+}
+void design4(int row)
+{int  col=row*2;
+
+   for(int i=0;i<col;i++)
+   { cout<<"*";}
+   cout<<endl;
+   for(int i=row;i>=1;i--)
+    { for(int j=1;j<=col;j++)
+      {if((j==1)|| (j==col) || (j==i) || (j+i==col+1) )
+        cout<<"*";
+        else
+        cout<<" ";
+      }
+      cout<<endl;
+    }
+return;
+}
+void design5(int row)
+{ int col=row*2;
+   for(int i=1;i<=row;i++)
+    { for(int j=1;j<=col;j++)
+       {if(j==1 || j==col|| j==i || j+i==col+1)
+          cout<<"*";
+          else
+          cout<<" ";
+       }
+       cout<<endl;
+    }
+
+ for(int k=0;k<col;k++)
+{ cout<<"*";}
+return ;
+}
+int design6(int row)
+{int col=row*2;
+ for(int k=0;k<col;k++)
+ { cout<<"*";}
+cout<<endl;
+   for(int i=row;i>=0;i--)
+   { for(int j=1;j<=col;j++)
+      { if(j==1 || j==col || j==i || j+i==col+1)
+          cout<<"*";
+          else
+         cout<<" ";
+       }
+        cout<<endl;
+     }
+   for(int l=1;l<=row;l++)
+{ for(int m=1;m<=col;m++)
+   { if(m==1 || m==col || m==l || m+l==col)
+          cout<<"*";
+          else
+             cout<<" ";
+       }
+      cout<<endl;
+      }
+for(int i=0;i<col;i++)
+{ cout<<"*";}
+
+}
+void design7(int row)
+{int  col=row*2;
+   for(int i=1;i<=row;i++)
+    { for(int j=1;j<=col;j++)
+       {if(j==1 || j==row || j==i || j+i==row+1)
+          cout<<"*";
+          else
+          cout<<" ";
+       }
+       cout<<endl;
+    }
+ return ;
+}
+void design8(int row)
+{  for(int i=1;i<=row;i++)
+     { for(int j=1;j<=row;j++)
+          { if(j>= (row+1)-i)
+             cout<<"*";
+              else
+             cout<<" ";
+              }
+          cout<<endl;
+}
+     for(int k=row;k>=0;k--)
+         { for(int l=1;l<=row;l++)
+                 { if(l>=(row+1)-k)
+                     cout<<"*";
+                     else
+                      cout<<" ";
+                   
+                   }
+                  cout<<endl;
+                }
+ return ;
+}
+void design9(int size)
+{for(int i=0;i<size;i++)
+   { for(int j=0;j<=i;j++)
+        { cout<<"*";}
+          cout<<endl;
+      }
+   for(int k=size;k>=0;k--)
+   { for(int l=0;l<=k;l++)
+        { cout<<"*";}
+            cout<<endl;
+       }
+return ;
+}
+void design10(int row)
+{ for(int i=1;i<=row;i++)
+     { for(int j=1;j<=row;j++)
+          { if(j>= (row+1)-i  && j<=i)
+             cout<<"*";
+              else
+             cout<<" ";
+              }
+          cout<<endl;
+}
+     for(int k=row;k>=1;k--)
+         { for(int l=1;l<=row;l++)
+                 { if(l>=(row+1)-k && l<=k)
+                     cout<<"*";
+                     else
+                      cout<<" ";
+                   
+                   }
+                  cout<<endl;
+                }
+return ;
+}
+void design11(int size)
+{ for(int i=size-1;i>=0;i--)
+    { for(int j=1;j<=i;j++)
+         { cout<<" ";}
+         cout<<endl;
+    }
+    for(int k=1;k<=size;k++)
+     { for( int l=1;l<=size;l++)
+        { if(l==size || l==(size+1)-k )
+           cout<<"*";
+           else
+           cout<<" ";
+        }
+        cout<<endl;
+     }
+    for(int m=size;m>=1;m--)
+     { for(int n=1;n<=size;n++)
+          { if(n==size || n==(size+1)-m)
+             cout<<"*";
+             else
+             cout<<" ";
+          }
+          cout<<endl;
+     }
+return ;
+}
+void design12(int row)
+{ for(int i=1;i<=row;i++)
+   { cout<<"*";
+     for(int j=1;j<=i;j++)
+         {cout<<" ";}
+         cout<<"*";
+           cout<<endl;
+         }
+               /* for(int k=1;k<=row;k++)
+         { cout<<"*";}
+      cout<<endl;
+for(int g=1;g<=row;g++)
+ { cout<<"*";}
+
+*/
+  cout<<endl;
+    for(int l=row;l>=1;l--)
+      { cout<<"*";
+         for(int m=1;m<=l;m++)
+          {cout<<" ";}
+          cout<<"*";
+           cout<<endl;
+              }
+return ;
+}
+void design13(int row)
+{
+   int col=row*2;
+   
+   
+   for(int i=row;i>=0;i--)
+    { for(int k=0;k<=col;k++)
+       { if(k==i || k==(col+1)-i)
+          cout<<"*";
+          else
+          cout<<" ";
+       }
+       cout<<endl;
+    }
+   
+   for(int i=1;i<=row;i++)
+   {for(int j=1;j<=col;j++)
+      { if(j==i || j==(col+1)-i)
+         cout<<"*";
+         else
+         cout<<" ";
+      }
+      cout<<endl;
+   }
+return ;
+}
+int main()
+{ int row;
+  cout<<"enter the number";
+  cin>>row;
+  int x;
+  for(x=-1;x<=26;x++)
+{x++; 
+system("cls"); 
+if(x==0)
+{ design1(row);}
+else
+if(x==2)
+{ design2(row);}
+else
+if(x==3)
+{ design2(row);}
+else
+if(x==4)
+{ design3(row);}
+else
+if(x==6)
+{ design4(row);}
+if(x==8)
+{ design5(row);}
+if(x==10)
+{ design6(row);}
+if(x==12)
+{design7(row);}
+if(x==14)
+{ design8(row);}
+if(x==16)
+{ design9(row);}
+if(x==18)
+{ design10(row);}
+if(x==20)
+{ design11(row);}
+if(x==22)
+{ design12(row);}
+if(x==24)
+{ design13(row);}
+
+for(volatile int i=0;i<=20000000;i++)
+{}
+
+}
+return 0;
+}
+  

@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+int main()
+{ int n;
+cout<<"enter your range";
+cin>>n;
+int s;
+s=((n*(n+1)*(2*n+1))/6);
+cout<<s;
+/*for(int i=1;i<=n;i++)
+{ */
+return 0;
+}

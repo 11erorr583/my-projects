@@ -1,0 +1,11 @@
+#include<iostream>//c-style program practice
+using namespace std;
+int main()
+{ const int max=80;
+  char arr[max];
+  cout<<"enter the data in your array";
+  cin.get (arr,max);
+  cout<<endl;
+  cout<<arr;
+  return 0;
+}
